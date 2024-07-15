@@ -89,7 +89,7 @@ import express from 'express';
 
 2.- Crear una instancia de express
 ```js
-    const app = express();
+const app = express();
 ```
 
 3.- Creamos una ruta para healtCheck
