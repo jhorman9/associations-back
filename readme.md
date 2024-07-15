@@ -19,17 +19,17 @@
  1.- Agregar el soporte para es6 -> "type": "module"
  
  ```json
-    "type": "module"
+"type": "module"
  ```
  
  2.- Agregar los scripts de arranque y desarrollo
 
  ```json
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "nodemon ./app.js",
-        "start": "node ./app.js"
-    },
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./app.js",
+    "start": "node ./app.js"
+},
  ```
 
  Y al final queda asi:
@@ -84,7 +84,7 @@ Nos dirigimos al archivos app.js
 
 1.- Importamos express
 ```js
-    import express from 'express';
+import express from 'express';
 ```
 
 2.- Crear una instancia de express
@@ -94,37 +94,37 @@ Nos dirigimos al archivos app.js
 
 3.- Creamos una ruta para healtCheck
 ```js
-    app.get('/', (req, res) => {
-        res.send('OK')
-    })
+app.get('/', (req, res) => {
+    res.send('OK')
+})
 ```
 
 4.- Creamos una variable para nuestro puerto
 ```js
-    import express from 'express';
+import express from 'express';
 
-    const PORT = process.env.PORT ?? 8000;
+const PORT = process.env.PORT ?? 8000;
 
-    const app = express();
+const app = express();
 
-    app.get('/', (req, res) => {
-        res.send('OK')
-    })
+app.get('/', (req, res) => {
+    res.send('OK')
+})
 ```
 
 5.- Dejar escuchando al servidor en el puerto
 ```js
-    import express from 'express';
+import express from 'express';
 
-    const PORT = process.env.PORT ?? 8000;
+const PORT = process.env.PORT ?? 8000;
 
-    const app = express();
+const app = express();
 
-    app.get('/', (req, res) => {
-        res.send('OK')
-    })
+app.get('/', (req, res) => {
+    res.send('OK')
+})
 
-    app.listen(PORT, () => {
-        console.log(`Servidor escuchando en el puerto ${PORT}`);
-    });
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
 ```
