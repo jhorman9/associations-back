@@ -128,3 +128,60 @@ app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
 ```
+
+## Conectarnos a la base de datos
+
+1.- Crear una base de datos en PostgreSQL.(autos_db)
+
+2.- En utils crear un archivo database.js
+
+3.- Importar Sequelize y dotenv
+
+```js
+    import { Sequelize } from 'sequelize';
+    import 'dotenv/config';
+```
+
+4.- Crear una instancia con la informacion de la conexión
+
+```js
+    import { Sequelize } from 'sequelize';
+    import 'dotenv/config';
+
+    const db = new Sequelize({
+    host: process.env.DB_HOST,
+    database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    dialect: 'postgres',
+    ...process.env.NODE_ENV === 'production' 
+        ? { dialectOptions: { ssl: {require: true,rejectUnauthorized: false,},}, } 
+        : {  },
+    });
+    export default db;
+```
+
+Usamos el metodo authenticate para probar la conexión
+
+```js
+import express from 'express';
+
+db.authenticate()
+.then(() => console.log('conexion de base de datos exitoso'))
+.catch((err) => console.log(err))
+
+const PORT = process.env.PORT ?? 8000;
+
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('OK')
+})
+
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
+```
+
+5.- 
